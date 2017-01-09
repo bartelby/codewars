@@ -1,73 +1,49 @@
-package codewars;
+package com.ibm.questions;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+
 
 /**
- * Created by bartelby on 1/8/17.
+ * Created by Peter on 1/7/17.
  */
 /*
-    I first attempted this using a thread pool and counting the actual time in seconds - this led to excesive
-    execution times.  Thinking about it, it seems to me that an effective single-threaded algorithm would be:
-        create an array of n till queues
-        for each customer
-            for each queue
-                if queue is empty
-                    put customer in queue
-            find max and min queue values
-            add min to total time
-            for each queue
-                subtract min from queue
+    There is a queue for the self-checkout tills at the supermarket. Your task is write a function to calculate
+    the total time required for all the customers to check out!
+
+    The function has two input variables:
+
+        customers: an array (list in python) of positive integers representing the queue. Each integer represents a
+        customer, and its value is the amount of time they require to check out.
+        n: a positive integer, the number of checkout tills.
+
+    The function should return an integer, the total time required.
+
+    Assume that the front person in the queue (i.e. the first element in the array/list) proceeds to a till as soon as
+    it becomes free. So, for example:
+
+    N.B. You should assume that all the test input will be valid, as specified above.
+
+    P.S. The situation in this kata can be likened to the more-computer-science-related idea of a thread pool,
+    with relation to running multiple processes at the same time: https://en.wikipedia.org/wiki/Thread_poo
  */
-import java.util.ArrayList;
 public class Solution {
 
-    public static int solveSuperMarketQueue(int[] cs, int n) {
-        int[] queues = new int[n];
-        ArrayList<Integer> customers = new ArrayList<Integer>();
-        for (int c : cs) { customers.add(c);}
-        int total_time = 0;
-        while (customers.iterator().hasNext()) {
-            for (int queue = 0; queue < queues.length; queue++) {
-                if (queues[queue] == 0 && customers.iterator().hasNext()) {
-                    queues[queue] = customers.remove(0);
-                }
-            }
-            if (isEmpty(queues) != null) {
-                continue;
-            }
-            int max = Integer.MIN_VALUE, min = Integer.MAX_VALUE;
-            for (int i = 0; i < queues.length; i++) {
-                min = queues[i] < min ? queues[i] : min;
-                max = queues[i] > max ? queues[i] : max;
-            }
-            total_time += min;
-            for (int queue = 0; queue < queues.length; queue++) {
-                queues[queue] -= min;
-            }
+    public static int solveSuperMarketQueue(int[] customers, int n) {
+        List<TillThread> tills = new ArrayList<TillThread>();
+        for(int i=0; i < n; n++) {
+
         }
-        int max = 0;
-        for (int i = 0; i < queues.length; i++) {
-            max = queues[i] > max ? queues[i] : max;
-        }
-        total_time += max;
-        return total_time;
     }
 
-    private static Integer isEmpty(int[] queues) {
-        for (Integer i = 0; i < queues.length; i++) {
-            if (queues[i] == 0) {
-                return i;
-            }
-        }
-        return null;
-    }
+    class TillThread implements Runnable {
 
+        public int ticks;
+        public void setTicks(int ticks) { this.ticks = ticks;}
 
-    public static void main(String[] args) {
-        //int[] customers = {4,7,7,1,2,6,4,1,7,3,5,2,1,7,7,7,6,7,3,1,4,3,6};
-        int[] customers = {3,2};
-        //int[] customers = {3};
-        int tills = 10;
-        int count = Solution.solveSuperMarketQueue(customers, tills);
-        System.out.println(count);
+        public void run() {}
+
     }
 
 }
