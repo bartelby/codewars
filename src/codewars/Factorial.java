@@ -1,4 +1,4 @@
-package cowers;
+package codewars;
 
 /**
  * Created by Peter on 1/7/17.
