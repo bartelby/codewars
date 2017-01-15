@@ -1,4 +1,4 @@
-package com.ibm.questions;
+package codewars;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,6 +35,7 @@ public class Solution {
         for(int i=0; i < n; n++) {
 
         }
+        return 42;
     }
 
     class TillThread implements Runnable {
