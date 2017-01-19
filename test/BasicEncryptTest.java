@@ -3,7 +3,7 @@
  */
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-import codewasrs.BasicEncrypt;
+import codewars.BasicEncrypt;
 
 public class BasicEncryptTest {
     @Test

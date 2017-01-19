@@ -17,11 +17,33 @@ package codewars;
 
     https://www.codewars.com/kata/basic-encryption/train/java
  */
+
+
 public class BasicEncrypt {
 
     public String encrypt(String text, int rule) {
+        String ret = "";
+        rule = rule%256;
+        byte[] barr = text.getBytes();
+        char[] carr = new char[barr.length];
+        for (int i = 0; i < barr.length; i++) {
+            int shift = 0;
+            if(barr[i] + rule >= 0 && barr[i] + rule < 256) shift = barr[i] + rule;
+            else if (barr[i] + rule < 0) shift = 256 - rule;
+            else shift = barr[i] + rule - 256;
+            carr[i] = (char)shift;
+        }
+        ret = new String(carr);
+        return ret;
+    }
 
-        //return encrypted text;
-        return "";
+    public static void main(String[] args) {
+        BasicEncrypt me = new BasicEncrypt();
+        String s = me.encrypt("wvbnvhshckgeurxwdi", 433);
+        if (s != null) {
+            System.out.println(s);
+        }
+        else System.out.println("Sunday Nothing");
+
     }
 }
