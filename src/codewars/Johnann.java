@@ -41,15 +41,15 @@ import java.util.ArrayList;
 
 public class Johnann {
 
-    static List<Long> toLong(List<Integer> list) {
-        List<Long> lout = new ArrayList<Long>();
-        for(Integer i : list) lout.add(Long.valueOf(i.longValue()));
+    private static List<Long> toLong(List<Integer> list) {
+        List<Long> lout = new ArrayList<>();
+        for(Integer i : list) lout.add(i.longValue());
         return lout;
     }
 
     public static List<Long> john(long n) {
-        List<Integer> john = new ArrayList<Integer>();
-        List<Integer> ann = new ArrayList<Integer>();
+        List<Integer> john = new ArrayList<>();
+        List<Integer> ann = new ArrayList<>();
         john.add(0);
         ann.add(1);
         for (int i = 1; i < n; i++) {
@@ -59,8 +59,8 @@ public class Johnann {
         return toLong(john);
     }
     public static List<Long> ann(long n) {
-        List<Integer> john = new ArrayList<Integer>();
-        List<Integer> ann = new ArrayList<Integer>();
+        List<Integer> john = new ArrayList<>();
+        List<Integer> ann = new ArrayList<>();
         john.add(0);
         ann.add(1);
         for (int i = 1; i < n; i++) {

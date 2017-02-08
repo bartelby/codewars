@@ -5,18 +5,10 @@ import codewars.Solution;
 
 public class SolutionTest {
     @Test
-    public void testNormalCondition() {
-        assertEquals(9, Solution.solveSuperMarketQueue(new int[] { 2, 2, 3, 3, 4, 4 }, 2));
+    public void exampleTests() {
+        assertEquals("", Solution.lcs("a", "b"));
+        assertEquals("abc", Solution.lcs("abcdef", "abc"));
+        assertEquals("ac", Solution.lcs("ac","abc"));
+        assertEquals("acf", Solution.lcs("axcqwf","abcdef"));
     }
-
-    @Test
-    public void testEmptyArray() {
-        assertEquals(0, Solution.solveSuperMarketQueue(new int[] {}, 1));
-    }
-
-    @Test
-    public void testSingleTillManyCustomers() {
-        assertEquals(15, Solution.solveSuperMarketQueue(new int[] { 1, 2, 3, 4, 5 }, 1));
-    }
-
 }
